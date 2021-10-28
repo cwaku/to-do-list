@@ -13,9 +13,17 @@ body {
 .list {
   margin: 10% 25%;
   padding: 0;
-  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.75);
+}
+
+ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+  border-bottom: 1px solid #c9bebeab;
 }
 
 ul li:last-child {
@@ -37,12 +45,4 @@ ul li:last-child {
 .icons:hover {
   cursor: move;
   color: #000;
-}
-
-ul li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2%;
-  border-bottom: 1px solid #c9bebeab;
 }
