@@ -21,7 +21,7 @@ function showList() {
   list.append(input);
 
   for (let i = 0; i < toDoList[0]; i += 1) {
-    const listCode = `<li><p><input type="checkbox">${toDoList[1].description}</p> <i class="fas fa-ellipsis-v icons"></i>`;
+    const listCode = `<li data-id="${i}"><p><input type="checkbox">${toDoList[1].description}</p> <i class="fas fa-ellipsis-v icons"></i>`;
 
     list.innerHTML += listCode;
   }
