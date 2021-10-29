@@ -1,9 +1,9 @@
 import "./style.css";
-import { checkBox, checkbox } from './status';
+import { checkBox, completed } from './status';
 
 const list = document.querySelector(".list");
 
-const toDoList = [
+export let toDoList = [
   {
     index: 0,
     description: "wash the dishes",
@@ -29,11 +29,11 @@ function showList() {
 
   for (let i = 0; i < toDoList.length; i += 1) {
     if (toDoList[0].index === i) {
-      const listCode = `<li data-id="${i}"><div id="${i}" class="task"><input class="check-box" type="checkbox"><p>${toDoList[i].description}</p></div>
+      const listCode = `<li data-id="${i}"><div id="${i}" class="task"><input class="check-box list-${i}" type="checkbox"><p>${toDoList[i].description}</p></div>
     <i class="fas fa-ellipsis-v icons"></i>`;
       list.innerHTML += listCode;
     } else if (toDoList[1].index === i) {
-      const listCode = `<li data-id="${i}"><div id="${i}" class="task"><input class="check-box" type="checkbox"><p>${toDoList[i].description}</p></div>
+      const listCode = `<li data-id="${i}"><div id="${i}" class="task"><input class="check-box list-${i}" type="checkbox"><p>${toDoList[i].description}</p></div>
     <i class="fas fa-ellipsis-v icons"></i>`;
       list.innerHTML += listCode;
     }
@@ -44,7 +44,23 @@ function showList() {
   list.append(btn);
 }
 
+showList();
+
+
 document.addEventListener("DOMContentLoaded", () => {
-  showList();
-  checkBox();
+  toDoList = JSON.parse(localStorage.getItem('ToDo'));
+  console.log(toDoList);
+
+  if (toDoList[0].completed === true) {
+    document.getElementById('0').classList.add('strike');
+    document.querySelector('.list-0').checked = true;
+  }
+  
+  if (toDoList[1].completed === true) {
+    document.getElementById('1').classList.add('strike');
+    document.querySelector('.list-1').checked = true;
+  }
+
+  const checkbox = document.querySelectorAll(".check-box");
+  checkBox(checkbox);
 });
