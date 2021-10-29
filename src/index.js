@@ -2,7 +2,7 @@
 import { checkBox } from './status.js';
 import './style.css';
 
-export let toDoList = [
+export let toDoList = JSON.parse(localStorage.getItem('ToDo')) || [
   {
     index: 0,
     description: 'wash the dishes',
@@ -47,8 +47,6 @@ function showList() {
 showList();
 
 document.addEventListener('DOMContentLoaded', () => {
-  toDoList = JSON.parse(localStorage.getItem('ToDo'));
-
   if (toDoList[0].completed === true) {
     document.getElementById('0').classList.add('strike');
     document.querySelector('.list-0').checked = true;
