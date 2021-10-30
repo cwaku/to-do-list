@@ -91,6 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
   clearCompleted.addEventListener('click', () => {
     toDoList = toDoList.filter((x) => x.completed === false);
     showList();
+    for (let i = 0; i < toDoList.length; i += 1) {
+      toDoList[i].index = i;
+    }
     localStorage.setItem('ToDo', JSON.stringify(toDoList));
   })
 
