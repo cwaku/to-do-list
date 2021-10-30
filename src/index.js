@@ -37,6 +37,7 @@ export let toDoList = JSON.parse(localStorage.getItem('ToDo')) || [];
 
   const clearBtn = document.createElement('button');
   clearBtn.type = 'button';
+  clearBtn.className = 'clear-all';
   clearBtn.textContent = 'Clear all completed';
   document.body.insertAdjacentElement('afterbegin', div);
   //div.insertAdjacentElement('beforeend', clearBtn);
@@ -55,7 +56,7 @@ export let toDoList = JSON.parse(localStorage.getItem('ToDo')) || [];
 
 
     const checkbox = document.querySelectorAll('.check-box');
-  checkBox(checkbox);
+    checkBox(checkbox);
 
 
     const btn = document.querySelectorAll('.icon-d');
@@ -75,15 +76,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const submitBtn = document.querySelector('.sub-icon');
   submitBtn.addEventListener('click', () => {
-    const description = document.querySelector('.text').value.trim();
+    const desInput = document.querySelector('.text');
+    const description = desInput.value.trim();
     if(!description) { return };
     
     const completed = false;
     const newList = new toDoClass(description, completed);
     toDoClass.addTo(newList);
-    console.log(toDoList);
     showList();
+    desInput.value = '';
   });
+
+  const clearCompleted = document.querySelector('.clear-all');
+  clearCompleted.addEventListener('click', () => {
+    toDoList = toDoList.filter((x) => x.completed === false);
+    showList();
+    localStorage.setItem('ToDo', JSON.stringify(toDoList));
+  })
 
   if (toDoList[0].completed === true) {
     document.getElementById('0').classList.add('strike');
