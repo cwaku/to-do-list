@@ -1,52 +1,90 @@
 /* eslint-disable */
 import { checkBox } from './status.js';
+import { toDoClass } from './addRemove.js';
 import './style.css';
 
-export let toDoList = JSON.parse(localStorage.getItem('ToDo')) || [
-  {
-    index: 0,
-    description: 'wash the dishes',
-    completed: false,
-  },
-  {
-    index: 1,
-    description: 'hit the gym',
-    completed: false,
-  },
-];
+export let toDoList = JSON.parse(localStorage.getItem('ToDo')) || [];
 /* eslint-enable */
 
-const list = document.querySelector('.list');
 
-function showList() {
-  const heading = document.createElement('li');
-  heading.innerHTML = '<p>Today\'s To Do</p> <i class="fas fa-sync-alt icons"></i>';
-  list.append(heading);
+  const div = document.createElement('div');
+  div.className = 'container';
 
-  const input = document.createElement('li');
-  input.innerHTML = '<input class="text" type="text" placeholder="Add to your list..."> <i class="fas fa-stream icons"></i>';
-  list.append(input);
+  const heading = document.createElement('p');
+  heading.className = 'heading';
+  heading.textContent = 'Today\'s To Do';
+  const span = document.createElement('span');
+  span.innerHTML = '<i class="fas fa-sync-alt icons iconed"></i>';
+  heading.append(span);
+  div.append(heading);
 
-  for (let i = 0; i < toDoList.length; i += 1) {
-    if (toDoList[0].index === i) {
-      const listCode = `<li data-id="${i}"><div id="${i}" class="task"><input class="check-box list-${i}" type="checkbox"><p>${toDoList[i].description}</p></div>
-        <i class="fas fa-ellipsis-v icons"></i>`;
-      list.innerHTML += listCode;
-    } else if (toDoList[1].index === i) {
-      const listCode = `<li data-id="${i}"><div id="${i}" class="task"><input class="check-box list-${i}" type="checkbox"><p>${toDoList[i].description}</p></div>
-        <i class="fas fa-ellipsis-v icons"></i>`;
-      list.innerHTML += listCode;
-    }
-  }
+  
+  const contain = document.createElement('div');
+  contain.className = 'contain';
+  const me = document.createElement('div');
+  me.className = 'input'
+  const input = document.createElement('input');
+  input.placeholder = 'Add to your list...';
+  input.type = 'text';
+  input.className = 'text';
+  const span1 = document.createElement('div');
+  span1.innerHTML = '<i class="fas fa-stream sub-icon"></i>';
+  contain.append(me);
+  contain.append(span1);
+  me.append(input);
+  div.append(contain);
 
-  const btn = document.createElement('li');
-  btn.innerHTML = '<button type="button">Clear all completed</button>';
-  list.append(btn);
+
+  const clearBtn = document.createElement('button');
+  clearBtn.type = 'button';
+  clearBtn.textContent = 'Clear all completed';
+  document.body.insertAdjacentElement('afterbegin', div);
+  //div.insertAdjacentElement('beforeend', clearBtn);
+
+  const list = document.querySelector('.list'); //we might import
+  div.append(list)
+  div.append(clearBtn);
+  
+
+  function showList() {
+  const listsCode = toDoList.map((newList) => new toDoClass(newList.description, newList.completed, newList.index)
+      .listCode());
+      
+    list.innerHTML = listsCode.join('');
+
+
+
+    const checkbox = document.querySelectorAll('.check-box');
+  checkBox(checkbox);
+
+
+    const btn = document.querySelectorAll('.icon-d');
+    btn.forEach((el) => {
+      el.addEventListener('click', (e) => {
+        const oldList = e.target.parentElement.parentElement.getAttribute('data-id'); //get parent
+        toDoClass.remove(oldList);
+        showList();
+      });
+    });
 }
 
 showList();
 
 document.addEventListener('DOMContentLoaded', () => {
+  
+
+  const submitBtn = document.querySelector('.sub-icon');
+  submitBtn.addEventListener('click', () => {
+    const description = document.querySelector('.text').value.trim();
+    if(!description) { return };
+    
+    const completed = false;
+    const newList = new toDoClass(description, completed);
+    toDoClass.addTo(newList);
+    console.log(toDoList);
+    showList();
+  });
+
   if (toDoList[0].completed === true) {
     document.getElementById('0').classList.add('strike');
     document.querySelector('.list-0').checked = true;
@@ -56,7 +94,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('1').classList.add('strike');
     document.querySelector('.list-1').checked = true;
   }
-
-  const checkbox = document.querySelectorAll('.check-box');
-  checkBox(checkbox);
 });
