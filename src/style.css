@@ -15,7 +15,6 @@ body {
   justify-content: space-between;
   border-bottom: 1px solid #c9bebeab;
   padding-bottom: 5px;
-
 }
 
 .iconed,
@@ -30,7 +29,7 @@ body {
 }
 
 .heading {
-  display:  flex;
+  display: flex;
   justify-content: space-between;
   padding-bottom: 20px;
   border-bottom: 1px solid #c9bebeab;
@@ -56,7 +55,6 @@ p {
 
 .list {
   padding: 0;
-  
 }
 
 ul li {
@@ -93,6 +91,7 @@ ul li {
   color: red;
   font-size: 20px;
 }
+
 .icons {
   color: #746d6d;
 }
