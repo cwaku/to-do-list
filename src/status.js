@@ -6,23 +6,22 @@ export function completed(state, description) {
   if (state) {
     description.classList.add('strike');
     const index = description.getAttribute('id');
-    if (Number(index) === toDoList[0].index) {
-      toDoList[0].completed = true;
-      localStorage.setItem('ToDo', JSON.stringify(toDoList));
-    } else if (Number(index) === toDoList[1].index) {
-      toDoList[1].completed = true;
-      localStorage.setItem('ToDo', JSON.stringify(toDoList));
-    }
+		for (let i = 0; i <= toDoList.length; i += 1) {
+			if (Number(index) === toDoList[i].index) {
+				toDoList[i].completed = true;
+				localStorage.setItem('ToDo', JSON.stringify(toDoList));
+			}
+			}
+    
   } else {
     description.classList.remove('strike');
     const index = description.getAttribute('id');
-    if (Number(index) === toDoList[0].index) {
-      toDoList[0].completed = false;
-      localStorage.setItem('ToDo', JSON.stringify(toDoList));
-    } else if (Number(index) === toDoList[1].index) {
-      toDoList[1].completed = false;
-      localStorage.setItem('ToDo', JSON.stringify(toDoList));
-    }
+    for (let i = 0; i <= toDoList.length; i += 1) {
+			if (Number(index) === toDoList[i].index) {
+				toDoList[i].completed = false;
+				localStorage.setItem('ToDo', JSON.stringify(toDoList));
+			}
+			}
   }
 }
 
