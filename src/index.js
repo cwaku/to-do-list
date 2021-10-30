@@ -37,13 +37,12 @@ clearBtn.type = 'button';
 clearBtn.className = 'clear-all';
 clearBtn.textContent = 'Clear all completed';
 document.body.insertAdjacentElement('afterbegin', div);
-// div.insertAdjacentElement('beforeend', clearBtn);
 
-const list = document.querySelector('.list'); // we might import
+const list = document.querySelector('.list');
 div.append(list);
 div.append(clearBtn);
 
-function showList() {
+export function showList() {
   const listsCode = toDoList.map((newList) => new ToDoClass(
     newList.description,
     newList.completed,
@@ -76,8 +75,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    let id = 0;
+    if (toDoList.length === 0) {
+      id = toDoList.length + 1;
+    } else if (toDoList.length > 0) {
+      id = toDoList[toDoList.length - 1].index + 1;
+    }
+
+    const index = id;
+
     const completed = false;
-    const newList = new ToDoClass(description, completed);
+    const newList = new ToDoClass(description, completed, index);
     ToDoClass.addTo(newList);
     showList();
     desInput.value = '';
@@ -88,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toDoList = toDoList.filter((x) => x.completed === false);
     showList();
     for (let i = 0; i < toDoList.length; i += 1) {
-      toDoList[i].index = i;
+      toDoList[i].index = i + 1;
     }
     localStorage.setItem('ToDo', JSON.stringify(toDoList));
   });

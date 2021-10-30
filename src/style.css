@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-  margin: 10% 25%;
+  margin: 10% 25% 0 25%;
   padding: 20px 0;
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.75);
@@ -106,4 +106,6 @@ ul li {
   border: none;
   background-color: #fff;
   width: 100%;
+  font-size: 15px;
+  margin-bottom: 10px;
 }

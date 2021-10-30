@@ -16,11 +16,6 @@ export class ToDoClass {
   }
 
   static addTo(newList) {
-    let id = 0;
-    if (toDoList.length > 0) {
-      id = toDoList[toDoList.length - 1].index + 1;
-    }
-    newList.index = id;
     toDoList.push(newList);
     localStorage.setItem('ToDo', JSON.stringify(toDoList));
   }
@@ -28,8 +23,8 @@ export class ToDoClass {
   static remove(oldList) {
     toDoList = toDoList.filter((x) => x.index !== Number(oldList));
     for (let i = 0; i < toDoList.length; i += 1) {
-      toDoList[i].index = i;
-      localStorage.setItem('ToDo', JSON.stringify(toDoList));
+      toDoList[i].index = i + 1;
     }
+    localStorage.setItem('ToDo', JSON.stringify(toDoList));
   }
 }
