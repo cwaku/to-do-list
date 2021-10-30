@@ -21,6 +21,12 @@ body {
 .iconed,
 .sub-icon {
   padding-right: 10px;
+  cursor: pointer;
+}
+
+.sub-icon:hover {
+  font-size: 20px;
+  color: aqua;
 }
 
 .heading {
@@ -79,6 +85,14 @@ ul li {
   color: #746d6d;
 }
 
+.icon-d {
+  padding-right: 5px;
+}
+
+.icon-d:hover {
+  color: red;
+  font-size: 20px;
+}
 .icons {
   color: #746d6d;
 }
@@ -86,4 +100,11 @@ ul li {
 .icons:hover {
   cursor: move;
   color: #000;
+  font-size: 20px;
+}
+
+.clear-all {
+  border: none;
+  background-color: #fff;
+  width: 100%;
 }
