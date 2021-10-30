@@ -25,7 +25,6 @@ export class toDoClass {
 
   static remove(oldList) {
     toDoList = toDoList.filter((x) => x.index !== Number(oldList));
-    console.log(toDoList);
     for (let i = 0; i < toDoList.length; i += 1) {
       toDoList[i].index = i;
       localStorage.setItem("ToDo", JSON.stringify(toDoList));
