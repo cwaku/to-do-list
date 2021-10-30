@@ -93,8 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('ToDo', JSON.stringify(toDoList));
   });
 
-  const isComp = document.querySelectorAll('.check-box');
-  isComp.forEach((el) => {
+  const isComplete = document.querySelectorAll('.check-box');
+  isComplete.forEach((el) => {
     for (let i = 0; i < toDoList.length; i += 1) {
       if (toDoList[i].completed === true) {
         const compId = el.parentElement.getAttribute('id');
