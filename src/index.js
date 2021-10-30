@@ -38,9 +38,14 @@ clearBtn.className = 'clear-all';
 clearBtn.textContent = 'Clear all completed';
 document.body.insertAdjacentElement('afterbegin', div);
 
+const save = document.createElement('button');
+save.className = 'save';
+save.textContent = 'Save edits';
+
 const list = document.querySelector('.list');
 div.append(list);
 div.append(clearBtn);
+div.append(save);
 
 export function showList() {
   const listsCode = toDoList.map((newList) => new ToDoClass(
@@ -112,5 +117,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }
+  });
+
+  const saveBtn = document.querySelector('.save');
+  const paragraphs = document.querySelectorAll('.edit');
+  paragraphs.forEach((el) => {
+    el.addEventListener('click', () => {
+      saveBtn.addEventListener('click', () => {
+        const newInput = el.innerHTML;
+        for (let i = 0; i < toDoList.length; i += 1) {
+          const parentId = el.parentElement.getAttribute('id');
+          if (Number(parentId) === toDoList[i].index) {
+            toDoList[i].description = newInput;
+          }
+        }
+      });
+    });
   });
 });
