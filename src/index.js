@@ -1,3 +1,5 @@
+/* eslint-disable */
+import { checkBox } from './status.js';
 import './style.css';
 
 const list = document.querySelector('.list');
@@ -14,6 +16,9 @@ const toDoList = [
     completed: false,
   },
 ];
+/* eslint-enable */
+
+const list = document.querySelector('.list');
 
 function showList() {
   const heading = document.createElement('li');
@@ -30,11 +35,25 @@ function showList() {
     list.append(listItem);
   });
 
+
   const btn = document.createElement('li');
   btn.innerHTML = '<button type="button">Clear all completed</button>';
   list.append(btn);
 }
 
+showList();
+
 document.addEventListener('DOMContentLoaded', () => {
-  showList();
+  if (toDoList[0].completed === true) {
+    document.getElementById('0').classList.add('strike');
+    document.querySelector('.list-0').checked = true;
+  }
+
+  if (toDoList[1].completed === true) {
+    document.getElementById('1').classList.add('strike');
+    document.querySelector('.list-1').checked = true;
+  }
+
+  const checkbox = document.querySelectorAll('.check-box');
+  checkBox(checkbox);
 });
