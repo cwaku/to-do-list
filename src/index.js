@@ -24,11 +24,11 @@ function showList() {
   input.innerHTML = '<input class="text" type="text" placeholder="Add to your list..."> <i class="fas fa-stream icons"></i>';
   list.append(input);
 
-  for (let i = 0; i < toDoList[0]; i += 1) {
-    const listCode = `<li data-id="${i}"><p><input type="checkbox">${toDoList[1].description}</p> <i class="fas fa-ellipsis-v icons"></i>`;
-
-    list.innerHTML += listCode;
-  }
+  toDoList.forEach((item) => {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `<p><input type="checkbox">${item.description}</p><i class="fas fa-ellipsis-v icons"></i>`;
+    list.append(listItem);
+  });
 
   const btn = document.createElement('li');
   btn.innerHTML = '<button type="button">Clear all completed</button>';
