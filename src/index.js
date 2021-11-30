@@ -3,10 +3,14 @@ import './style.css';
 const list = document.querySelector('.list');
 
 const toDoList = [
-  2,
   {
     index: 0,
     description: 'wash the dishes',
+    completed: false,
+  },
+  {
+    index: 1,
+    description: 'do the laundry',
     completed: false,
   },
 ];
