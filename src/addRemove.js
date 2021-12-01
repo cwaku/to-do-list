@@ -11,8 +11,8 @@ export class ToDoClass {
   /* eslint-enable */
 
   listCode() {
-    return `<li data-id="${this.index}"><div id="${this.index}" class="task"><input class="check-box list-${this.index}" type="checkbox"><p contenteditable="true" class="edit">${this.description}</p></div>
-      <div><i class="fas fa-trash-alt icon-d"></i> <i class="fas fa-ellipsis-v icons"></i></div>`;
+    return `<li data-id="${this.index}"><div data-id="${this.index + 1}" class="task"><input class="check-box list-${this.index}" type="checkbox"><p contenteditable="true" class="edit">${this.description}</p></div>
+      <div class="contain-icons"><i class="fas fa-trash-alt icon-d"></i> <i class="fas fa-ellipsis-v icons"></i></div>`;
   }
 
   static addTo(newList) {

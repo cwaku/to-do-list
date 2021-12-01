@@ -119,16 +119,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Get edited task and update to localStorage
   const saveBtn = document.querySelector('.save');
   const paragraphs = document.querySelectorAll('.edit');
   paragraphs.forEach((el) => {
     el.addEventListener('click', () => {
       saveBtn.addEventListener('click', () => {
         const newInput = el.innerHTML;
+        console.log(newInput);
         for (let i = 0; i < toDoList.length; i += 1) {
-          const parentId = el.parentElement.getAttribute('id');
-          if (Number(parentId) === toDoList[i].index) {
+          const parentId = el.parentElement.getAttribute('data-id');
+          if (Number(parentId - 1) === toDoList[i].index) {
             toDoList[i].description = newInput;
+            localStorage.setItem('ToDo', JSON.stringify(toDoList));
           }
         }
       });

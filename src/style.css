@@ -41,6 +41,11 @@ body {
 
 p {
   outline: none;
+  width: 100%;
+}
+
+.contain-icons {
+  display: flex;
 }
 
 .text {
@@ -73,6 +78,7 @@ ul li {
 .task {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .list button {

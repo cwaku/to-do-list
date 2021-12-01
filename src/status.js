@@ -5,19 +5,19 @@ import { toDoList } from './index.js';
 export function completed(state, description) {
   if (state) {
     description.classList.add('strike');
-    const index = description.getAttribute('id');
+    const index = description.getAttribute('data-id');
     for (let i = 0; i < toDoList.length; i += 1) {
       toDoList[i].index = i + 1;
-      if (Number(index) === toDoList[i].index) {
+      if (Number(index - 1) === toDoList[i].index) {
         toDoList[i].completed = true;
         localStorage.setItem('ToDo', JSON.stringify(toDoList));
       }
     }
   } else {
     description.classList.remove('strike');
-    const index = description.getAttribute('id');
+    const index = description.getAttribute('data-id');
     for (let i = 0; i < toDoList.length; i += 1) {
-      if (Number(index) === toDoList[i].index) {
+      if (Number(index - 1) === toDoList[i].index) {
         toDoList[i].completed = false;
         localStorage.setItem('ToDo', JSON.stringify(toDoList));
       }
