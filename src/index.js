@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { checkBox } from './status.js';
 import { ToDoClass } from './addRemove.js';
-import "./style.css";
+import './style.css';
 
 export let toDoList = JSON.parse(localStorage.getItem('ToDo')) || [];
 /* eslint-enable */
