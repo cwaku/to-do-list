@@ -126,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('click', () => {
       saveBtn.addEventListener('click', () => {
         const newInput = el.innerHTML;
-        console.log(newInput);
         for (let i = 0; i < toDoList.length; i += 1) {
           const parentId = el.parentElement.getAttribute('data-id');
           if (Number(parentId - 1) === toDoList[i].index) {

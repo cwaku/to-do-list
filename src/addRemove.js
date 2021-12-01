@@ -7,7 +7,7 @@ export class ToDoClass {
     this.completed = completed;
     this.index = index;
   }
- 
+
   /* eslint-enable */
 
   listCode() {
