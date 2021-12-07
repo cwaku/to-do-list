@@ -212,6 +212,7 @@
     "get-stream": "^5.2.0",
     "get-symbol-description": "^1.0.0",
     "getpass": "^0.1.7",
+    "gh-pages": "^3.2.3",
     "glob": "^7.2.0",
     "glob-parent": "^5.1.2",
     "glob-to-regexp": "^0.4.1",
@@ -660,6 +661,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
+    "deploy": "gh-pages -d dist",
     "build": "webpack"
   },
   "repository": {
