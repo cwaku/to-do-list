@@ -31,7 +31,7 @@ module.exports = {
   },
 };
 
-const productionConfig = merge([
+const productionConfig = merge([ //eslint-disable-line
   {
     output: {
       publicPath: '/to-do-list/',
