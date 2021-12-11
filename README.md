@@ -15,7 +15,7 @@
 - HTML
 
 ## Live Demo
-![Click here to view](https://cwaku.github.io/to-do-list/)
+[Click here to view](https://cwaku.github.io/to-do-list/)
 
 ## Getting Started
 
